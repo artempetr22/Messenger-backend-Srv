@@ -39,7 +39,7 @@ public class RequestHandler {
             JdbcUserDAO userDAO = new JdbcUserDAO();
             userDAO.startChat(dialogForm, hash(dialogForm.getFrom(), dialogForm.getTo()));
 
-            System.out.println("dialogForm created: " + dialogForm.getFrom() + " & " + dialogForm.getTo());
+            System.out.println("-> dialogForm created: " + dialogForm.getFrom() + " & " + dialogForm.getTo());
         }
         catch (Exception e){
             e.printStackTrace();
@@ -80,6 +80,8 @@ public class RequestHandler {
         JdbcUserDAO jdbcUserDAO = new JdbcUserDAO();
 
         User logged = jdbcUserDAO.findByUserId(user);
+
+        System.out.println("-> user " + user + " was logged in");
 
         if (logged != null) return new ServerResponse("login user", "yes", "500", "user exists and logged in");
 
